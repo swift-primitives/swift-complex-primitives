@@ -1,0 +1,4 @@
+module CAllocationTracking {
+    umbrella "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/checkouts/swift-memory-allocation/Sources/CAllocationTracking/include"
+    export *
+}

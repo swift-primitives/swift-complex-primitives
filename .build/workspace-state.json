@@ -1,0 +1,199 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-dimension-primitives",
+          "kind" : "fileSystem",
+          "location" : "/Users/coen/Developer/swift-primitives/swift-dimension-primitives",
+          "name" : "swift-dimension-primitives"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/coen/Developer/swift-primitives/swift-dimension-primitives"
+        },
+        "subpath" : "swift-dimension-primitives"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-formatting-primitives",
+          "kind" : "fileSystem",
+          "location" : "/Users/coen/Developer/swift-primitives/swift-formatting-primitives",
+          "name" : "swift-formatting-primitives"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/coen/Developer/swift-primitives/swift-formatting-primitives"
+        },
+        "subpath" : "swift-formatting-primitives"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-identity-primitives",
+          "kind" : "fileSystem",
+          "location" : "/Users/coen/Developer/swift-primitives/swift-identity-primitives",
+          "name" : "swift-identity-primitives"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/coen/Developer/swift-primitives/swift-identity-primitives"
+        },
+        "subpath" : "swift-identity-primitives"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-memory-allocation",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/coenttb/swift-memory-allocation",
+          "name" : "swift-memory-allocation"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "afe7e86f16981007b841470d5ea79f0026868bc3",
+            "version" : "0.2.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-memory-allocation"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-numeric-primitives",
+          "kind" : "fileSystem",
+          "location" : "/Users/coen/Developer/swift-primitives/swift-numeric-primitives",
+          "name" : "swift-numeric-primitives"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/coen/Developer/swift-primitives/swift-numeric-primitives"
+        },
+        "subpath" : "swift-numeric-primitives"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-numerics",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/apple/swift-numerics",
+          "name" : "swift-numerics"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "0c0290ff6b24942dadb83a929ffaaa1481df04a2",
+            "version" : "1.1.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-numerics"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-standard-library-extensions",
+          "kind" : "fileSystem",
+          "location" : "/Users/coen/Developer/swift-primitives/swift-standard-library-extensions",
+          "name" : "swift-standard-library-extensions"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/coen/Developer/swift-primitives/swift-standard-library-extensions"
+        },
+        "subpath" : "swift-standard-library-extensions"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-syntax",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/swiftlang/swift-syntax",
+          "name" : "swift-syntax"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+            "version" : "602.0.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-syntax"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-test-support-primitives",
+          "kind" : "fileSystem",
+          "location" : "/Users/coen/Developer/swift-primitives/swift-test-support-primitives",
+          "name" : "swift-test-support-primitives"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/coen/Developer/swift-primitives/swift-test-support-primitives"
+        },
+        "subpath" : "swift-test-support-primitives"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-testing-performance",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/coenttb/swift-testing-performance",
+          "name" : "swift-testing-performance"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "1a1967f7acfcb081e57122db463817c142cc7186",
+            "version" : "0.3.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-testing-performance"
+      }
+    ],
+    "prebuilts" : [
+      {
+        "cModules" : [
+
+        ],
+        "checkoutPath" : "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/checkouts/swift-syntax",
+        "identity" : "swift-syntax",
+        "includePath" : [
+          "Sources/_SwiftSyntaxCShims/include",
+          "Sources/_SwiftLibraryPluginProviderCShims/include"
+        ],
+        "libraryName" : "MacroSupport",
+        "path" : "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/prebuilts/swift-syntax/602.0.0/swiftlang-6.2.3.3.21-MacroSupport-macos_aarch64",
+        "products" : [
+          "swift-syntaxPackageTests",
+          "SwiftBasicFormat",
+          "SwiftCompilerPlugin",
+          "SwiftDiagnostics",
+          "SwiftIDEUtils",
+          "SwiftIfConfig",
+          "SwiftLexicalLookup",
+          "SwiftOperators",
+          "SwiftParser",
+          "SwiftParserDiagnostics",
+          "SwiftRefactor",
+          "SwiftSyntax",
+          "SwiftSyntaxBuilder",
+          "SwiftSyntaxMacros",
+          "SwiftSyntaxMacroExpansion",
+          "SwiftSyntaxMacrosTestSupport",
+          "SwiftSyntaxMacrosGenericTestSupport",
+          "_SwiftCompilerPluginMessageHandling",
+          "_SwiftLibraryPluginProvider"
+        ],
+        "version" : "602.0.0"
+      }
+    ]
+  },
+  "version" : 7
+}

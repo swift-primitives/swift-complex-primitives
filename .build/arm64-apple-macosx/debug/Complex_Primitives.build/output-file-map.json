@@ -1,0 +1,152 @@
+{
+  "": {
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/master.swiftdeps"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex+Arithmetic.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Arithmetic.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Arithmetic.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Arithmetic~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Arithmetic.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Arithmetic.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex+Equatable.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Equatable.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Equatable.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Equatable~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Equatable.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Equatable.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex+Hashable.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Hashable.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Hashable.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Hashable~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Hashable.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Hashable.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex+Polar.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Polar.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Polar.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Polar~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Polar.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+Polar.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex+String.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+String.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+String.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+String~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+String.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex+String.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Equals.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Equals.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Equals.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Equals~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Equals.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Equals.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Magnitude.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Magnitude.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Magnitude.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Magnitude~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Magnitude.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Magnitude.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.Exp.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Exp.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Exp.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Exp~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Exp.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Exp.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.Hyperbolic.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Hyperbolic.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Hyperbolic.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Hyperbolic~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Hyperbolic.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Hyperbolic.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.Inverse.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Inverse.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Inverse.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Inverse~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Inverse.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Inverse.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.Log.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Log.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Log.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Log~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Log.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Log.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.Power.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Power.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Power.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Power~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Power.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Power.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.Trigonometric.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Trigonometric.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Trigonometric.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Trigonometric~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Trigonometric.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.Trigonometric.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Math.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Math.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Modulus.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Modulus.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Modulus.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Modulus~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Modulus.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Modulus.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Polar.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Polar.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Polar.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Polar~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Polar.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Polar.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Properties.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Properties.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Properties.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Properties~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Properties.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Properties.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Relaxed.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Relaxed.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Relaxed.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Relaxed~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Relaxed.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Relaxed.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.Scalar.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Scalar.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Scalar.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Scalar~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Scalar.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.Scalar.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/Numeric.Complex.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/Numeric.Complex.dia"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/Sources/Complex Primitives/exports.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/exports.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/exports.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Complex_Primitives.build/exports.dia"
+  }
+}

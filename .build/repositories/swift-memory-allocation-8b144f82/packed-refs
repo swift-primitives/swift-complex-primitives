@@ -1,0 +1,10 @@
+# pack-refs with: peeled fully-peeled sorted 
+0f1c1b8b5d1d2620f8e951c930c6d95cb48aea0a refs/heads/dependabot/github_actions/actions/cache-5
+ba326dda26590e162cd88ecfd2da9e4e81603917 refs/heads/dependabot/github_actions/actions/checkout-6
+fbef10d80e80af99f36b1a88a6cad3f0b48c6074 refs/heads/main
+0f1c1b8b5d1d2620f8e951c930c6d95cb48aea0a refs/pull/1/head
+2b5a337241783bf3554af96defd8f97c3752f199 refs/pull/1/merge
+ba326dda26590e162cd88ecfd2da9e4e81603917 refs/pull/2/head
+9ec708bf2c4091691a2ad97fba57d7ffe09a406c refs/pull/2/merge
+0efbfb98b4a9dbc958e7c45b4f5a5cfa29cdbcb8 refs/tags/0.1.0
+afe7e86f16981007b841470d5ea79f0026868bc3 refs/tags/0.2.0

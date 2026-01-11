@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Numerics.build/master.swiftdeps"
+  },
+  "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/checkouts/swift-numerics/Sources/Numerics/Numerics.swift": {
+    "dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Numerics.build/Numerics.d",
+    "object": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Numerics.build/Numerics.swift.o",
+    "swiftmodule": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Numerics.build/Numerics~partial.swiftmodule",
+    "swift-dependencies": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Numerics.build/Numerics.swiftdeps",
+    "diagnostics": "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/Numerics.build/Numerics.dia"
+  }
+}

@@ -1,0 +1,3 @@
+module TestingPerformance {
+    header "/Users/coen/Developer/swift-primitives/swift-numeric-complex-primitives/.build/arm64-apple-macosx/debug/TestingPerformance.build/include/TestingPerformance-Swift.h"
+}

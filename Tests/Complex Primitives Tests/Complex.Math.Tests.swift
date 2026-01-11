@@ -16,7 +16,7 @@ import Testing
 @Suite
 struct ComplexMathTests {
 
-    let tolerance: Double = 1e-10
+    let tolerance: Numeric.Real<Double> = 1e-10
 
     // MARK: - Exponential
 
@@ -30,20 +30,20 @@ struct ComplexMathTests {
         // exp(1) = e
         let z1 = Numeric.Complex<Double>(1.0)
         let exp1 = z1.math.exp()
-        #expect(exp1.real.equals.approximate(Double.math.exp(1), tolerance: tolerance))
-        #expect(exp1.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(exp1.real.equals.approximate(Double.math.exp(1).real, tolerance: tolerance))
+        #expect(exp1.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // exp(iπ) = -1 (Euler's identity)
         let zPi = Numeric.Complex(0.0, Double.pi)
         let expPi = zPi.math.exp()
-        #expect(expPi.real.equals.approximate(-1, tolerance: tolerance))
-        #expect(expPi.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(expPi.real.equals.approximate(-1.0, tolerance: tolerance))
+        #expect(expPi.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // exp(iπ/2) = i
         let zHalfPi = Numeric.Complex(0.0, Double.pi / 2)
         let expHalfPi = zHalfPi.math.exp()
-        #expect(expHalfPi.real.equals.approximate(0, tolerance: tolerance))
-        #expect(expHalfPi.imaginary.equals.approximate(1, tolerance: tolerance))
+        #expect(expHalfPi.real.equals.approximate(0.0, tolerance: tolerance))
+        #expect(expHalfPi.imaginary.equals.approximate(1.0, tolerance: tolerance))
     }
 
     @Test
@@ -71,20 +71,20 @@ struct ComplexMathTests {
         // log(e) = 1
         let zE = Numeric.Complex(Double.math.exp(1), 0.0)
         let logE = zE.math.log()
-        #expect(logE.real.equals.approximate(1, tolerance: tolerance))
-        #expect(logE.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(logE.real.equals.approximate(1.0, tolerance: tolerance))
+        #expect(logE.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // log(-1) = iπ
         let zNeg1 = Numeric.Complex(-1.0, 0.0)
         let logNeg1 = zNeg1.math.log()
-        #expect(logNeg1.real.equals.approximate(0, tolerance: tolerance))
-        #expect(logNeg1.imaginary.equals.approximate(Double.pi, tolerance: tolerance))
+        #expect(logNeg1.real.equals.approximate(0.0, tolerance: tolerance))
+        #expect(logNeg1.imaginary.equals.approximate(Double.pi.i, tolerance: tolerance))
 
         // log(i) = iπ/2
         let zI = Numeric.Complex<Double>.i
         let logI = zI.math.log()
-        #expect(logI.real.equals.approximate(0, tolerance: tolerance))
-        #expect(logI.imaginary.equals.approximate(Double.pi / 2, tolerance: tolerance))
+        #expect(logI.real.equals.approximate(0.0, tolerance: tolerance))
+        #expect(logI.imaginary.equals.approximate((Double.pi / 2).i, tolerance: tolerance))
     }
 
     @Test
@@ -120,13 +120,13 @@ struct ComplexMathTests {
         // cos(π) = -1
         let zPi = Numeric.Complex(Double.pi, 0.0)
         let cosPi = zPi.math.cos()
-        #expect(cosPi.real.equals.approximate(-1, tolerance: tolerance))
-        #expect(cosPi.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(cosPi.real.equals.approximate(-1.0, tolerance: tolerance))
+        #expect(cosPi.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // cos(π/2) = 0
         let zHalfPi = Numeric.Complex(Double.pi / 2, 0.0)
         let cosHalfPi = zHalfPi.math.cos()
-        #expect(cosHalfPi.real.equals.approximate(0, tolerance: tolerance))
+        #expect(cosHalfPi.real.equals.approximate(0.0, tolerance: tolerance))
     }
 
     @Test
@@ -139,13 +139,13 @@ struct ComplexMathTests {
         // sin(π/2) = 1
         let zHalfPi = Numeric.Complex(Double.pi / 2, 0.0)
         let sinHalfPi = zHalfPi.math.sin()
-        #expect(sinHalfPi.real.equals.approximate(1, tolerance: tolerance))
-        #expect(sinHalfPi.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(sinHalfPi.real.equals.approximate(1.0, tolerance: tolerance))
+        #expect(sinHalfPi.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // sin(π) = 0
         let zPi = Numeric.Complex(Double.pi, 0.0)
         let sinPi = zPi.math.sin()
-        #expect(sinPi.real.equals.approximate(0, tolerance: tolerance))
+        #expect(sinPi.real.equals.approximate(0.0, tolerance: tolerance))
     }
 
     @Test
@@ -158,8 +158,8 @@ struct ComplexMathTests {
         // tan(π/4) = 1
         let zQuarterPi = Numeric.Complex(Double.pi / 4, 0.0)
         let tanQuarterPi = zQuarterPi.math.tan()
-        #expect(tanQuarterPi.real.equals.approximate(1, tolerance: tolerance))
-        #expect(tanQuarterPi.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(tanQuarterPi.real.equals.approximate(1.0, tolerance: tolerance))
+        #expect(tanQuarterPi.imaginary.equals.approximate(0.0, tolerance: tolerance))
     }
 
     @Test
@@ -186,7 +186,7 @@ struct ComplexMathTests {
         let zX = Numeric.Complex(x, 0.0)
         let coshX = zX.math.cosh()
         let expected = (Double.math.exp(x) + Double.math.exp(-x)) / 2
-        #expect(coshX.real.equals.approximate(expected, tolerance: tolerance))
+        #expect(coshX.real.equals.approximate(expected.real, tolerance: tolerance))
     }
 
     @Test
@@ -201,7 +201,7 @@ struct ComplexMathTests {
         let zX = Numeric.Complex(x, 0.0)
         let sinhX = zX.math.sinh()
         let expected = (Double.math.exp(x) - Double.math.exp(-x)) / 2
-        #expect(sinhX.real.equals.approximate(expected, tolerance: tolerance))
+        #expect(sinhX.real.equals.approximate(expected.real, tolerance: tolerance))
     }
 
     @Test
@@ -234,7 +234,7 @@ struct ComplexMathTests {
         // acos(0) = π/2
         let z0 = Numeric.Complex<Double>.zero
         let acos0 = z0.math.acos()
-        #expect(acos0.real.equals.approximate(Double.pi / 2, tolerance: tolerance))
+        #expect(acos0.real.equals.approximate((Double.pi / 2).real, tolerance: tolerance))
     }
 
     @Test
@@ -247,7 +247,7 @@ struct ComplexMathTests {
         // asin(1) = π/2
         let z1 = Numeric.Complex<Double>.one
         let asin1 = z1.math.asin()
-        #expect(asin1.real.equals.approximate(Double.pi / 2, tolerance: tolerance))
+        #expect(asin1.real.equals.approximate((Double.pi / 2).real, tolerance: tolerance))
     }
 
     @Test
@@ -304,21 +304,21 @@ struct ComplexMathTests {
         // sqrt(4) = 2
         let z4 = Numeric.Complex(4.0, 0.0)
         let sqrt4 = z4.math.sqrt()
-        #expect(sqrt4.real.equals.approximate(2, tolerance: tolerance))
-        #expect(sqrt4.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(sqrt4.real.equals.approximate(2.0, tolerance: tolerance))
+        #expect(sqrt4.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // sqrt(-1) = i
         let zNeg1 = Numeric.Complex(-1.0, 0.0)
         let sqrtNeg1 = zNeg1.math.sqrt()
-        #expect(sqrtNeg1.real.equals.approximate(0, tolerance: tolerance))
-        #expect(sqrtNeg1.imaginary.equals.approximate(1, tolerance: tolerance))
+        #expect(sqrtNeg1.real.equals.approximate(0.0, tolerance: tolerance))
+        #expect(sqrtNeg1.imaginary.equals.approximate(1.0, tolerance: tolerance))
 
         // sqrt(i) = (1 + i)/√2
         let zI = Numeric.Complex<Double>.i
         let sqrtI = zI.math.sqrt()
-        let expected = 1 / Double.math.sqrt(2)
+        let expected: Numeric.Real<Double> = (1.0 / Double.math.sqrt(2)).real
         #expect(sqrtI.real.equals.approximate(expected, tolerance: tolerance))
-        #expect(sqrtI.imaginary.equals.approximate(expected, tolerance: tolerance))
+        #expect(sqrtI.imaginary.equals.approximate(expected.value.i, tolerance: tolerance))
     }
 
     @Test
@@ -349,8 +349,8 @@ struct ComplexMathTests {
         // i^2 = -1
         let i = Numeric.Complex<Double>.i
         let i2 = i.math.pow(2)
-        #expect(i2.real.equals.approximate(-1, tolerance: tolerance))
-        #expect(i2.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(i2.real.equals.approximate(-1.0, tolerance: tolerance))
+        #expect(i2.imaginary.equals.approximate(0.0, tolerance: tolerance))
     }
 
     @Test
@@ -358,8 +358,8 @@ struct ComplexMathTests {
         // 8^(1/3) = 2
         let z8 = Numeric.Complex(8.0, 0.0)
         let cubeRoot = z8.math.root(3)
-        #expect(cubeRoot.real.equals.approximate(2, tolerance: tolerance))
-        #expect(cubeRoot.imaginary.equals.approximate(0, tolerance: tolerance))
+        #expect(cubeRoot.real.equals.approximate(2.0, tolerance: tolerance))
+        #expect(cubeRoot.imaginary.equals.approximate(0.0, tolerance: tolerance))
 
         // z^(1/2) = sqrt(z)
         let z = Numeric.Complex(3.0, 4.0)

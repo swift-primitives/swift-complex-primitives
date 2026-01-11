@@ -64,9 +64,9 @@ struct ComplexPolarTests {
         let z = Numeric.Complex(length: length, phase: phase)
 
         // Should reconstruct to approximately (5*cos(π/4), 5*sin(π/4))
-        let expected = 5.0 * Double.math.sqrt(2.0) / 2.0
-        #expect(z.real.equals.approximate(expected, tolerance: 1e-10))
-        #expect(z.imaginary.equals.approximate(expected, tolerance: 1e-10))
+        let expectedValue = 5.0 * Double.math.sqrt(2.0) / 2.0
+        #expect(z.real.equals.approximate(expectedValue.real, tolerance: 1e-10))
+        #expect(z.imaginary.equals.approximate(expectedValue.i, tolerance: 1e-10))
     }
 
     @Test
@@ -100,13 +100,13 @@ struct ComplexPolarTests {
         let m2 = Numeric.Complex<Double>.Modulus.Value(4.0)
 
         let sum = m1 + m2
-        #expect(sum.rawValue == 7.0)
+        #expect(sum == 7.0)
 
         let diff = m2 - m1
-        #expect(diff.rawValue == 1.0)
+        #expect(diff == 1.0)
 
         let product = m1 * m2
-        #expect(product.rawValue == 12.0)
+        #expect(product == 12.0)
 
         let quotient = m2 / m1
         #expect(quotient.rawValue.equals.approximate(4.0 / 3.0, tolerance: 1e-10))

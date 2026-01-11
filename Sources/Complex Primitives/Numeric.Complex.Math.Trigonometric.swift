@@ -40,21 +40,6 @@ extension Numeric.Complex.Math {
     }
 }
 
-// MARK: - Cos Primary Operation
-
-extension Numeric.Complex.Math.Cos {
-    /// The complex cosine.
-    ///
-    /// Computed as `cos(z) = cosh(iz)`.
-    @inlinable
-    public func callAsFunction() -> Numeric.Complex<Scalar> {
-        // cos(z) = cosh(iz)
-        // iz = i(x + iy) = -y + ix
-        let iz = Numeric.Complex(-complex.imaginary, complex.real)
-        return iz.math.cosh()
-    }
-}
-
 // MARK: - Cos Minus Accessor
 
 extension Numeric.Complex.Math.Cos {
@@ -80,21 +65,34 @@ extension Numeric.Complex.Math.Cos {
     }
 }
 
-extension Numeric.Complex.Math.Cos.Minus {
+// MARK: - Double
+
+extension Numeric.Complex.Math.Cos where Scalar == Double {
+    /// The complex cosine.
+    ///
+    /// Computed as `cos(z) = cosh(iz)`.
+    @inlinable
+    public func callAsFunction() -> Numeric.Complex<Scalar> {
+        // cos(z) = cosh(iz)
+        // iz = i(x + iy) = -y + ix
+        let iz = Numeric.Complex(-complex.imaginary._value, complex.real._value)
+        return iz.math.cosh()
+    }
+}
+
+extension Numeric.Complex.Math.Cos.Minus where Scalar == Double {
     /// cos(z) - 1, computed accurately for small z.
     ///
     /// Uses the identity: cos(z) - 1 = -2 sin²(z/2)
     @inlinable
     public func one() -> Numeric.Complex<Scalar> {
-        let halfZ = complex.scalar.divide(by: 2)
+        let halfZ = complex.scalar.divide(by: Numeric.Real(2))
         let sinHalf = halfZ.math.sin()
-        return (sinHalf * sinHalf).scalar.multiply(by: -2)
+        return (sinHalf * sinHalf).scalar.multiply(by: Numeric.Real(-2))
     }
 }
 
-// MARK: - Sin
-
-extension Numeric.Complex.Math {
+extension Numeric.Complex.Math where Scalar == Double {
     /// The complex sine.
     ///
     /// Computed as `sin(z) = -i sinh(iz)`.
@@ -102,25 +100,60 @@ extension Numeric.Complex.Math {
     public func sin() -> Numeric.Complex<Scalar> {
         // sin(z) = -i sinh(iz)
         // iz = -y + ix
-        let iz = Numeric.Complex(-complex.imaginary, complex.real)
+        let iz = Numeric.Complex(-complex.imaginary._value, complex.real._value)
         let w = iz.math.sinh()
         // -i(a + bi) = -ia + b = b - ai
-        return Numeric.Complex(w.imaginary, -w.real)
+        return Numeric.Complex(w.imaginary._value, -w.real._value)
     }
-}
 
-// MARK: - Tan
-
-extension Numeric.Complex.Math {
     /// The complex tangent.
     ///
     /// Computed as `tan(z) = -i tanh(iz)`.
     @inlinable
     public func tan() -> Numeric.Complex<Scalar> {
         // tan(z) = -i tanh(iz)
-        let iz = Numeric.Complex(-complex.imaginary, complex.real)
+        let iz = Numeric.Complex(-complex.imaginary._value, complex.real._value)
         let w = iz.math.tanh()
         // -i(a + bi) = b - ai
-        return Numeric.Complex(w.imaginary, -w.real)
+        return Numeric.Complex(w.imaginary._value, -w.real._value)
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Complex.Math.Cos where Scalar == Float {
+    /// The complex cosine.
+    @inlinable
+    public func callAsFunction() -> Numeric.Complex<Scalar> {
+        let iz = Numeric.Complex(-complex.imaginary._value, complex.real._value)
+        return iz.math.cosh()
+    }
+}
+
+extension Numeric.Complex.Math.Cos.Minus where Scalar == Float {
+    /// cos(z) - 1, computed accurately for small z.
+    @inlinable
+    public func one() -> Numeric.Complex<Scalar> {
+        let halfZ = complex.scalar.divide(by: Numeric.Real(2))
+        let sinHalf = halfZ.math.sin()
+        return (sinHalf * sinHalf).scalar.multiply(by: Numeric.Real(-2))
+    }
+}
+
+extension Numeric.Complex.Math where Scalar == Float {
+    /// The complex sine.
+    @inlinable
+    public func sin() -> Numeric.Complex<Scalar> {
+        let iz = Numeric.Complex(-complex.imaginary._value, complex.real._value)
+        let w = iz.math.sinh()
+        return Numeric.Complex(w.imaginary._value, -w.real._value)
+    }
+
+    /// The complex tangent.
+    @inlinable
+    public func tan() -> Numeric.Complex<Scalar> {
+        let iz = Numeric.Complex(-complex.imaginary._value, complex.real._value)
+        let w = iz.math.tanh()
+        return Numeric.Complex(w.imaginary._value, -w.real._value)
     }
 }

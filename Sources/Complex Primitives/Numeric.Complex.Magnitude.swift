@@ -15,8 +15,8 @@ extension Numeric.Complex {
     ///
     /// ```swift
     /// let z = Numeric.Complex(3.0, 4.0)
-    /// let r = z.magnitude()        // 5.0 (Euclidean norm)
-    /// let r2 = z.magnitude.squared // 25.0 (faster, no sqrt)
+    /// let r = z.magnitude()        // Real(5.0) (Euclidean norm)
+    /// let r2 = z.magnitude.squared // Real(25.0) (faster, no sqrt)
     /// ```
     public struct Magnitude {
         @usableFromInline
@@ -29,8 +29,7 @@ extension Numeric.Complex {
     }
 }
 
-extension Numeric.Complex.Magnitude: Sendable where Scalar: Sendable {
-}
+extension Numeric.Complex.Magnitude: Sendable where Scalar: Sendable {}
 
 // MARK: - Accessor
 
@@ -47,27 +46,40 @@ extension Numeric.Complex {
     }
 }
 
-// MARK: - Primary Operation
+// MARK: - Double
 
-extension Numeric.Complex.Magnitude {
+extension Numeric.Complex.Magnitude where Scalar == Double {
     /// The Euclidean norm (absolute value) of this complex number.
     ///
     /// Computed as `√(real² + imaginary²)` using `hypot` to avoid overflow.
+    /// Returns a typed `Real` since magnitude is always real.
     @inlinable
-    public func callAsFunction() -> Scalar {
-        Scalar.math.hypot(complex.real, complex.imaginary)
+    public func callAsFunction() -> Numeric.Real<Scalar> {
+        Numeric.Real(Double.math.hypot(complex.real._value, complex.imaginary._value))
     }
-}
 
-// MARK: - Squared
-
-extension Numeric.Complex.Magnitude {
     /// The squared magnitude.
     ///
     /// More efficient than `magnitude()` when only relative comparisons
     /// are needed or when the square is required.
     @inlinable
-    public var squared: Scalar {
-        complex.real * complex.real + complex.imaginary * complex.imaginary
+    public var squared: Numeric.Real<Scalar> {
+        Numeric.Real(complex.real._value * complex.real._value + complex.imaginary._value * complex.imaginary._value)
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Complex.Magnitude where Scalar == Float {
+    /// The Euclidean norm (absolute value) of this complex number.
+    @inlinable
+    public func callAsFunction() -> Numeric.Real<Scalar> {
+        Numeric.Real(Float.math.hypot(complex.real._value, complex.imaginary._value))
+    }
+
+    /// The squared magnitude.
+    @inlinable
+    public var squared: Numeric.Real<Scalar> {
+        Numeric.Real(complex.real._value * complex.real._value + complex.imaginary._value * complex.imaginary._value)
     }
 }

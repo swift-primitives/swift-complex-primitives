@@ -141,8 +141,8 @@ struct ComplexPropertiesTests {
         let z = Numeric.Complex(1000.0, 2000.0)
         let w = Numeric.Complex(1000.1, 2000.1)
 
-        #expect(z.equals.approximate(w, absolute: 0, relative: 1e-3))
-        #expect(!z.equals.approximate(w, absolute: 0, relative: 1e-5))
+        #expect(z.equals.approximate(w, absolute: 0.0, relative: 1e-3))
+        #expect(!z.equals.approximate(w, absolute: 0.0, relative: 1e-5))
     }
 
     @Test

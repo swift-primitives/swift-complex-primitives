@@ -10,9 +10,9 @@
 //
 // ===----------------------------------------------------------------------===//
 
-// MARK: - Cosh
+// MARK: - Double
 
-extension Numeric.Complex.Math {
+extension Numeric.Complex.Math where Scalar == Double {
     /// The complex hyperbolic cosine.
     ///
     /// ```
@@ -23,28 +23,24 @@ extension Numeric.Complex.Math {
         let z = complex
         guard z.isFinite else { return z }
 
-        let x = z.real
-        let y = z.imaginary
+        let x = z.real._value
+        let y = z.imaginary._value
 
         // For large |x|, cosh(x) ≈ sinh(x) ≈ exp(|x|)/2
-        let threshold = -Scalar.math.log(Scalar.ulpOfOne)
-        guard x.magnitude < threshold else {
-            let phase = Numeric.Complex(Scalar.math.cos(y), Scalar.math.sin(y))
-            let first = Scalar.math.exp(x.magnitude / 2)
+        let threshold = -Double.math.log(Double.ulpOfOne)
+        guard abs(x) < threshold else {
+            let phase = Numeric.Complex(Double.math.cos(y), Double.math.sin(y))
+            let first = Double.math.exp(abs(x) / 2)
             let second = first / 2
-            return phase.scalar.multiply(by: first).scalar.multiply(by: second)
+            return phase.scalar.multiply(by: Numeric.Real(first)).scalar.multiply(by: Numeric.Real(second))
         }
 
         return Numeric.Complex(
-            Scalar.math.cosh(x) * Scalar.math.cos(y),
-            Scalar.math.sinh(x) * Scalar.math.sin(y)
+            Double.math.cosh(x) * Double.math.cos(y),
+            Double.math.sinh(x) * Double.math.sin(y)
         )
     }
-}
 
-// MARK: - Sinh
-
-extension Numeric.Complex.Math {
     /// The complex hyperbolic sine.
     ///
     /// ```
@@ -55,28 +51,24 @@ extension Numeric.Complex.Math {
         let z = complex
         guard z.isFinite else { return z }
 
-        let x = z.real
-        let y = z.imaginary
+        let x = z.real._value
+        let y = z.imaginary._value
 
         // For large |x|, sinh(x) ≈ cosh(x) ≈ sign(x) exp(|x|)/2
-        let threshold = -Scalar.math.log(Scalar.ulpOfOne)
-        guard x.magnitude < threshold else {
-            let phase = Numeric.Complex(Scalar.math.cos(y), Scalar.math.sin(y))
-            let first = Scalar.math.exp(x.magnitude / 2)
-            let second = Scalar(signOf: x, magnitudeOf: first / 2)
-            return phase.scalar.multiply(by: first).scalar.multiply(by: second)
+        let threshold = -Double.math.log(Double.ulpOfOne)
+        guard abs(x) < threshold else {
+            let phase = Numeric.Complex(Double.math.cos(y), Double.math.sin(y))
+            let first = Double.math.exp(abs(x) / 2)
+            let second = Double(signOf: x, magnitudeOf: first / 2)
+            return phase.scalar.multiply(by: Numeric.Real(first)).scalar.multiply(by: Numeric.Real(second))
         }
 
         return Numeric.Complex(
-            Scalar.math.sinh(x) * Scalar.math.cos(y),
-            Scalar.math.cosh(x) * Scalar.math.sin(y)
+            Double.math.sinh(x) * Double.math.cos(y),
+            Double.math.cosh(x) * Double.math.sin(y)
         )
     }
-}
 
-// MARK: - Tanh
-
-extension Numeric.Complex.Math {
     /// The complex hyperbolic tangent.
     ///
     /// ```
@@ -87,19 +79,89 @@ extension Numeric.Complex.Math {
         let z = complex
         guard z.isFinite else { return z }
 
-        let x = z.real
-        let y = z.imaginary
+        let x = z.real._value
+        let y = z.imaginary._value
 
         // For large |x|, tanh(z) → ±1
-        let threshold = -Scalar.math.log(Scalar.ulpOfOne)
-        guard x.magnitude < threshold else {
+        let threshold = -Double.math.log(Double.ulpOfOne)
+        guard abs(x) < threshold else {
             return Numeric.Complex(
-                Scalar(signOf: x, magnitudeOf: 1),
-                Scalar(signOf: y, magnitudeOf: 0)
+                Double(signOf: x, magnitudeOf: 1),
+                Double(signOf: y, magnitudeOf: 0)
             )
         }
 
         // General case
+        return z.math.sinh() / z.math.cosh()
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Complex.Math where Scalar == Float {
+    /// The complex hyperbolic cosine.
+    @inlinable
+    public func cosh() -> Numeric.Complex<Scalar> {
+        let z = complex
+        guard z.isFinite else { return z }
+
+        let x = z.real._value
+        let y = z.imaginary._value
+
+        let threshold = -Float.math.log(Float.ulpOfOne)
+        guard abs(x) < threshold else {
+            let phase = Numeric.Complex(Float.math.cos(y), Float.math.sin(y))
+            let first = Float.math.exp(abs(x) / 2)
+            let second = first / 2
+            return phase.scalar.multiply(by: Numeric.Real(first)).scalar.multiply(by: Numeric.Real(second))
+        }
+
+        return Numeric.Complex(
+            Float.math.cosh(x) * Float.math.cos(y),
+            Float.math.sinh(x) * Float.math.sin(y)
+        )
+    }
+
+    /// The complex hyperbolic sine.
+    @inlinable
+    public func sinh() -> Numeric.Complex<Scalar> {
+        let z = complex
+        guard z.isFinite else { return z }
+
+        let x = z.real._value
+        let y = z.imaginary._value
+
+        let threshold = -Float.math.log(Float.ulpOfOne)
+        guard abs(x) < threshold else {
+            let phase = Numeric.Complex(Float.math.cos(y), Float.math.sin(y))
+            let first = Float.math.exp(abs(x) / 2)
+            let second = Float(signOf: x, magnitudeOf: first / 2)
+            return phase.scalar.multiply(by: Numeric.Real(first)).scalar.multiply(by: Numeric.Real(second))
+        }
+
+        return Numeric.Complex(
+            Float.math.sinh(x) * Float.math.cos(y),
+            Float.math.cosh(x) * Float.math.sin(y)
+        )
+    }
+
+    /// The complex hyperbolic tangent.
+    @inlinable
+    public func tanh() -> Numeric.Complex<Scalar> {
+        let z = complex
+        guard z.isFinite else { return z }
+
+        let x = z.real._value
+        let y = z.imaginary._value
+
+        let threshold = -Float.math.log(Float.ulpOfOne)
+        guard abs(x) < threshold else {
+            return Numeric.Complex(
+                Float(signOf: x, magnitudeOf: 1),
+                Float(signOf: y, magnitudeOf: 0)
+            )
+        }
+
         return z.math.sinh() / z.math.cosh()
     }
 }

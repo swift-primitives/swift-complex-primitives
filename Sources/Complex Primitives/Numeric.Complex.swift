@@ -11,50 +11,81 @@
 // ===----------------------------------------------------------------------===//
 
 extension Numeric {
-    /// A complex number with real and imaginary components.
+    /// A complex number with typed real and imaginary components.
     ///
     /// Complex numbers extend the real numbers with an imaginary unit `i`,
     /// where `i² = -1`. Every complex number can be written as `a + bi`
     /// where `a` is the real part and `b` is the imaginary part.
     ///
+    /// This implementation uses typed wrappers (`Real<Scalar>` and `Imaginary<Scalar>`)
+    /// to encode algebraic rules in the type system. The design philosophy is to
+    /// stay in the typed domain as long as possible, only unwrapping to raw scalars
+    /// at computation boundaries.
+    ///
     /// ## Example
     ///
     /// ```swift
-    /// let z = Numeric.Complex(3.0, 4.0)  // 3 + 4i
-    /// let w = Numeric.Complex(1.0, 2.0)  // 1 + 2i
+    /// // Using typed constructors
+    /// let z = 3.0.real + 4.0.i     // Complex<Double>
+    /// let w = 1.0.real + 2.0.i     // Complex<Double>
     ///
-    /// let sum = z + w                     // 4 + 6i
-    /// let product = z * w                 // -5 + 10i
+    /// // Type-safe algebra
+    /// let i = 4.0.i
+    /// let product = i * i           // Real<Double> with value -16.0 (i² = -1)
     ///
-    /// z.polar.length                      // 5.0 (magnitude)
-    /// z.polar.phase                       // atan2(4, 3) (argument in radians)
+    /// // Traditional construction still works
+    /// let z2 = Numeric.Complex(3.0, 4.0)
+    ///
+    /// z.polar.length                // Real<Double> (magnitude)
+    /// z.polar.phase                 // Radian<Double> (argument)
     /// ```
-    public struct Complex<Scalar> where Scalar: Numeric.Real {
+    public struct Complex<Scalar>: Sendable where Scalar: Sendable {
         /// The real component.
-        public var real: Scalar
+        public var real: Real<Scalar>
 
         /// The imaginary component.
-        public var imaginary: Scalar
+        public var imaginary: Imaginary<Scalar>
 
-        /// Creates a complex number from real and imaginary parts.
+        /// Creates a complex number from typed real and imaginary parts.
         @inlinable
-        public init(_ real: Scalar, _ imaginary: Scalar) {
+        public init(real: Real<Scalar>, imaginary: Imaginary<Scalar>) {
             self.real = real
             self.imaginary = imaginary
         }
 
-        /// Creates a complex number with zero imaginary part.
+        /// Creates a complex number from scalar real and imaginary parts.
+        ///
+        /// This is a convenience initializer for API compatibility.
+        /// Prefer using typed construction: `3.0.real + 4.0.i`
         @inlinable
-        public init(_ real: Scalar) {
-            self.real = real
-            self.imaginary = .zero
+        public init(_ real: Scalar, _ imaginary: Scalar) {
+            self.real = Real(real)
+            self.imaginary = Imaginary(imaginary)
         }
     }
 }
 
-// MARK: - Static Properties
+// MARK: - Raw Value Access
 
 extension Numeric.Complex {
+    /// The raw scalar value of the real component.
+    ///
+    /// Use this only at computation boundaries (interop with external APIs).
+    /// Prefer staying in the typed domain.
+    @inlinable
+    public var realValue: Scalar { real.value }
+
+    /// The raw scalar value of the imaginary component.
+    ///
+    /// Use this only at computation boundaries (interop with external APIs).
+    /// Prefer staying in the typed domain.
+    @inlinable
+    public var imaginaryValue: Scalar { imaginary.value }
+}
+
+// MARK: - Static Properties
+
+extension Numeric.Complex where Scalar: BinaryFloatingPoint {
     /// The complex number zero (0 + 0i).
     @inlinable
     public static var zero: Self { Self(.zero, .zero) }
@@ -66,12 +97,19 @@ extension Numeric.Complex {
     /// The imaginary unit (0 + 1i).
     @inlinable
     public static var i: Self { Self(.zero, 1) }
+
+    /// Creates a complex number with zero imaginary part.
+    @inlinable
+    public init(_ real: Scalar) {
+        self.init(real, .zero)
+    }
 }
+
 
 // MARK: - ExpressibleByIntegerLiteral
 
 extension Numeric.Complex: ExpressibleByIntegerLiteral
-where Scalar: ExpressibleByIntegerLiteral {
+where Scalar: ExpressibleByIntegerLiteral & BinaryFloatingPoint {
     @inlinable
     public init(integerLiteral value: Scalar.IntegerLiteralType) {
         self.init(Scalar(integerLiteral: value), .zero)
@@ -81,16 +119,12 @@ where Scalar: ExpressibleByIntegerLiteral {
 // MARK: - ExpressibleByFloatLiteral
 
 extension Numeric.Complex: ExpressibleByFloatLiteral
-where Scalar: ExpressibleByFloatLiteral {
+where Scalar: ExpressibleByFloatLiteral & BinaryFloatingPoint {
     @inlinable
     public init(floatLiteral value: Scalar.FloatLiteralType) {
         self.init(Scalar(floatLiteral: value), .zero)
     }
 }
-
-// MARK: - Sendable
-
-extension Numeric.Complex: Sendable where Scalar: Sendable {}
 
 // MARK: - Codable
 
@@ -98,8 +132,8 @@ extension Numeric.Complex: Sendable where Scalar: Sendable {}
 extension Numeric.Complex: Encodable where Scalar: Encodable {
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.unkeyedContainer()
-        try container.encode(real)
-        try container.encode(imaginary)
+        try container.encode(real.value)
+        try container.encode(imaginary.value)
     }
 }
 

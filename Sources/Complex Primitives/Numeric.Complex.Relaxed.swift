@@ -10,104 +10,137 @@
 //
 // ===----------------------------------------------------------------------===//
 
-// MARK: - Relaxed Arithmetic
+// MARK: - Double
 
 extension Numeric.Relaxed {
     /// `a + b` for complex numbers, with relaxed semantics.
     ///
     /// Permits the optimizer to reassociate and form FMAs componentwise.
-    ///
-    /// - Parameters:
-    ///   - a: First summand.
-    ///   - b: Second summand.
-    /// - Returns: The sum `a + b`.
     @inlinable
-    public static func sum<T: Numeric.Real>(
-        _ a: Numeric.Complex<T>,
-        _ b: Numeric.Complex<T>
-    ) -> Numeric.Complex<T> {
+    public static func sum(
+        _ a: Numeric.Complex<Double>,
+        _ b: Numeric.Complex<Double>
+    ) -> Numeric.Complex<Double> {
         Numeric.Complex(
-            T._relaxedAdd(a.real, b.real),
-            T._relaxedAdd(a.imaginary, b.imaginary)
+            Numeric.Relaxed.sum(a.real._value, b.real._value),
+            Numeric.Relaxed.sum(a.imaginary._value, b.imaginary._value)
         )
     }
 
     /// `a * b` for complex numbers, with relaxed semantics.
     ///
     /// Permits the optimizer to reassociate and form FMAs.
-    ///
-    /// - Parameters:
-    ///   - a: First multiplicand.
-    ///   - b: Second multiplicand.
-    /// - Returns: The product `a * b`.
     @inlinable
-    public static func product<T: Numeric.Real>(
-        _ a: Numeric.Complex<T>,
-        _ b: Numeric.Complex<T>
-    ) -> Numeric.Complex<T> {
+    public static func product(
+        _ a: Numeric.Complex<Double>,
+        _ b: Numeric.Complex<Double>
+    ) -> Numeric.Complex<Double> {
         // (a + bi)(c + di) = (ac - bd) + (ad + bc)i
         Numeric.Complex(
-            T._relaxedAdd(
-                T._relaxedMul(a.real, b.real),
-                -T._relaxedMul(a.imaginary, b.imaginary)
+            Numeric.Relaxed.sum(
+                Numeric.Relaxed.product(a.real._value, b.real._value),
+                -Numeric.Relaxed.product(a.imaginary._value, b.imaginary._value)
             ),
-            T._relaxedAdd(
-                T._relaxedMul(a.real, b.imaginary),
-                T._relaxedMul(a.imaginary, b.real)
+            Numeric.Relaxed.sum(
+                Numeric.Relaxed.product(a.real._value, b.imaginary._value),
+                Numeric.Relaxed.product(a.imaginary._value, b.real._value)
             )
         )
     }
 
     /// `a * b + c` for complex numbers, with relaxed semantics.
-    ///
-    /// The optimizer may compute this as fused multiply-add operations.
-    ///
-    /// - Parameters:
-    ///   - a: First multiplicand.
-    ///   - b: Second multiplicand.
-    ///   - c: Addend.
-    /// - Returns: `a * b + c`.
     @inlinable
-    public static func multiplyAdd<T: Numeric.Real>(
-        _ a: Numeric.Complex<T>,
-        _ b: Numeric.Complex<T>,
-        _ c: Numeric.Complex<T>
-    ) -> Numeric.Complex<T> {
+    public static func multiplyAdd(
+        _ a: Numeric.Complex<Double>,
+        _ b: Numeric.Complex<Double>,
+        _ c: Numeric.Complex<Double>
+    ) -> Numeric.Complex<Double> {
         sum(product(a, b), c)
     }
-}
 
-// MARK: - Complex-Scalar Relaxed Operations
-
-extension Numeric.Relaxed {
     /// `z * s` for complex times scalar, with relaxed semantics.
-    ///
-    /// - Parameters:
-    ///   - z: Complex number.
-    ///   - s: Scalar multiplier.
-    /// - Returns: `z * s`.
     @inlinable
-    public static func product<T: Numeric.Real>(
-        _ z: Numeric.Complex<T>,
-        _ s: T
-    ) -> Numeric.Complex<T> {
+    public static func product(
+        _ z: Numeric.Complex<Double>,
+        _ s: Double
+    ) -> Numeric.Complex<Double> {
         Numeric.Complex(
-            T._relaxedMul(z.real, s),
-            T._relaxedMul(z.imaginary, s)
+            Numeric.Relaxed.product(z.real._value, s),
+            Numeric.Relaxed.product(z.imaginary._value, s)
         )
     }
 
     /// `s * z` for scalar times complex, with relaxed semantics.
-    ///
-    /// - Parameters:
-    ///   - s: Scalar multiplier.
-    ///   - z: Complex number.
-    /// - Returns: `s * z`.
     @inlinable
-    public static func product<T: Numeric.Real>(
-        _ s: T,
-        _ z: Numeric.Complex<T>
-    ) -> Numeric.Complex<T> {
+    public static func product(
+        _ s: Double,
+        _ z: Numeric.Complex<Double>
+    ) -> Numeric.Complex<Double> {
+        product(z, s)
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Relaxed {
+    /// `a + b` for complex numbers, with relaxed semantics.
+    @inlinable
+    public static func sum(
+        _ a: Numeric.Complex<Float>,
+        _ b: Numeric.Complex<Float>
+    ) -> Numeric.Complex<Float> {
+        Numeric.Complex(
+            Numeric.Relaxed.sum(a.real._value, b.real._value),
+            Numeric.Relaxed.sum(a.imaginary._value, b.imaginary._value)
+        )
+    }
+
+    /// `a * b` for complex numbers, with relaxed semantics.
+    @inlinable
+    public static func product(
+        _ a: Numeric.Complex<Float>,
+        _ b: Numeric.Complex<Float>
+    ) -> Numeric.Complex<Float> {
+        Numeric.Complex(
+            Numeric.Relaxed.sum(
+                Numeric.Relaxed.product(a.real._value, b.real._value),
+                -Numeric.Relaxed.product(a.imaginary._value, b.imaginary._value)
+            ),
+            Numeric.Relaxed.sum(
+                Numeric.Relaxed.product(a.real._value, b.imaginary._value),
+                Numeric.Relaxed.product(a.imaginary._value, b.real._value)
+            )
+        )
+    }
+
+    /// `a * b + c` for complex numbers, with relaxed semantics.
+    @inlinable
+    public static func multiplyAdd(
+        _ a: Numeric.Complex<Float>,
+        _ b: Numeric.Complex<Float>,
+        _ c: Numeric.Complex<Float>
+    ) -> Numeric.Complex<Float> {
+        sum(product(a, b), c)
+    }
+
+    /// `z * s` for complex times scalar, with relaxed semantics.
+    @inlinable
+    public static func product(
+        _ z: Numeric.Complex<Float>,
+        _ s: Float
+    ) -> Numeric.Complex<Float> {
+        Numeric.Complex(
+            Numeric.Relaxed.product(z.real._value, s),
+            Numeric.Relaxed.product(z.imaginary._value, s)
+        )
+    }
+
+    /// `s * z` for scalar times complex, with relaxed semantics.
+    @inlinable
+    public static func product(
+        _ s: Float,
+        _ z: Numeric.Complex<Float>
+    ) -> Numeric.Complex<Float> {
         product(z, s)
     }
 }

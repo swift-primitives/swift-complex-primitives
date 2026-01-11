@@ -10,16 +10,26 @@
 //
 // ===----------------------------------------------------------------------===//
 
-// MARK: - CustomStringConvertible
+// MARK: - Double
 
-extension Numeric.Complex: CustomStringConvertible {
+extension Numeric.Complex where Scalar == Double {
     /// A textual representation of this complex number.
     ///
     /// Finite values are displayed as `"(real, imaginary)"`.
     /// Non-finite values are displayed as `"inf"`.
     public var description: String {
         guard isFinite else { return "inf" }
-        return "(\(real), \(imaginary))"
+        return "(\(real._value), \(imaginary._value))"
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Complex where Scalar == Float {
+    /// A textual representation of this complex number.
+    public var description: String {
+        guard isFinite else { return "inf" }
+        return "(\(real._value), \(imaginary._value))"
     }
 }
 
@@ -29,7 +39,7 @@ extension Numeric.Complex: CustomStringConvertible {
 extension Numeric.Complex: CustomDebugStringConvertible {
     /// A detailed textual representation for debugging.
     public var debugDescription: String {
-        "Numeric.Complex<\(Scalar.self)>(\(String(reflecting: real)), \(String(reflecting: imaginary)))"
+        "Numeric.Complex<\(Scalar.self)>(\(String(reflecting: real._value)), \(String(reflecting: imaginary._value)))"
     }
 }
 #endif

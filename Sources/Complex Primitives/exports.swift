@@ -10,5 +10,8 @@
 //
 // ===----------------------------------------------------------------------===//
 
+// Real_Primitives provides Numeric.Math, Numeric.Relaxed, Numeric.Augmented, and Numeric.Fraction.
+// The Numeric.Real protocol has been removed - we provide Numeric.Real<Scalar> struct instead.
 @_exported import Real_Primitives
+
 @_exported import Dimension_Primitives

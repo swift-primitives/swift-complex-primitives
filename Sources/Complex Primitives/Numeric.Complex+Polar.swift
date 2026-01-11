@@ -26,16 +26,16 @@ extension Numeric.Complex {
     public var polar: Polar { Polar(self) }
 }
 
-// MARK: - Length (Modulus)
+// MARK: - Double
 
-extension Numeric.Complex.Polar {
+extension Numeric.Complex.Polar where Scalar == Double {
     /// Returns the modulus (absolute value) of a complex number.
     ///
     /// The modulus is `√(real² + imaginary²)`, computed using `hypot`
     /// to avoid overflow.
     @inlinable
     public static func length(of z: Numeric.Complex<Scalar>) -> Numeric.Complex<Scalar>.Modulus.Value {
-        Numeric.Complex.Modulus.Value(Scalar.math.hypot(z.real, z.imaginary))
+        Numeric.Complex.Modulus.Value(Double.math.hypot(z.real._value, z.imaginary._value))
     }
 
     /// The modulus (absolute value) of this complex number.
@@ -43,17 +43,13 @@ extension Numeric.Complex.Polar {
     public var length: Numeric.Complex<Scalar>.Modulus.Value {
         Self.length(of: complex)
     }
-}
 
-// MARK: - Phase (Argument)
-
-extension Numeric.Complex.Polar {
     /// Returns the phase (argument) of a complex number in radians.
     ///
     /// The phase is `atan2(imaginary, real)`, in the range `(-π, π]`.
     @inlinable
     public static func phase(of z: Numeric.Complex<Scalar>) -> Radian<Scalar> {
-        Radian(Scalar.math.atan2(z.imaginary, z.real))
+        Radian(Double.math.atan2(z.imaginary._value, z.real._value))
     }
 
     /// The phase (argument) in radians.
@@ -61,11 +57,23 @@ extension Numeric.Complex.Polar {
     public var phase: Radian<Scalar> {
         Self.phase(of: complex)
     }
+
+    /// Returns the squared modulus (faster than computing length).
+    ///
+    /// Useful when comparing magnitudes or when the square is needed.
+    @inlinable
+    public static func squared(of z: Numeric.Complex<Scalar>) -> Scalar {
+        z.real._value * z.real._value + z.imaginary._value * z.imaginary._value
+    }
+
+    /// The squared modulus (faster than computing length).
+    @inlinable
+    public var squared: Scalar {
+        Self.squared(of: complex)
+    }
 }
 
-// MARK: - Polar Construction
-
-extension Numeric.Complex {
+extension Numeric.Complex where Scalar == Double {
     /// Creates a complex number from polar form.
     ///
     /// Given length `r` and phase `θ`, creates `r·(cos(θ) + i·sin(θ))`.
@@ -82,26 +90,61 @@ extension Numeric.Complex {
         let r = length.rawValue
         let θ = phase.rawValue
         self.init(
-            r * Scalar.math.cos(θ),
-            r * Scalar.math.sin(θ)
+            r * Double.math.cos(θ),
+            r * Double.math.sin(θ)
         )
     }
 }
 
-// MARK: - Squared Length
+// MARK: - Float
 
-extension Numeric.Complex.Polar {
+extension Numeric.Complex.Polar where Scalar == Float {
+    /// Returns the modulus (absolute value) of a complex number.
+    @inlinable
+    public static func length(of z: Numeric.Complex<Scalar>) -> Numeric.Complex<Scalar>.Modulus.Value {
+        Numeric.Complex.Modulus.Value(Float.math.hypot(z.real._value, z.imaginary._value))
+    }
+
+    /// The modulus (absolute value) of this complex number.
+    @inlinable
+    public var length: Numeric.Complex<Scalar>.Modulus.Value {
+        Self.length(of: complex)
+    }
+
+    /// Returns the phase (argument) of a complex number in radians.
+    @inlinable
+    public static func phase(of z: Numeric.Complex<Scalar>) -> Radian<Scalar> {
+        Radian(Float.math.atan2(z.imaginary._value, z.real._value))
+    }
+
+    /// The phase (argument) in radians.
+    @inlinable
+    public var phase: Radian<Scalar> {
+        Self.phase(of: complex)
+    }
+
     /// Returns the squared modulus (faster than computing length).
-    ///
-    /// Useful when comparing magnitudes or when the square is needed.
     @inlinable
     public static func squared(of z: Numeric.Complex<Scalar>) -> Scalar {
-        z.real * z.real + z.imaginary * z.imaginary
+        z.real._value * z.real._value + z.imaginary._value * z.imaginary._value
     }
 
     /// The squared modulus (faster than computing length).
     @inlinable
     public var squared: Scalar {
         Self.squared(of: complex)
+    }
+}
+
+extension Numeric.Complex where Scalar == Float {
+    /// Creates a complex number from polar form.
+    @inlinable
+    public init(length: Numeric.Complex<Scalar>.Modulus.Value, phase: Radian<Scalar>) {
+        let r = length.rawValue
+        let θ = phase.rawValue
+        self.init(
+            r * Float.math.cos(θ),
+            r * Float.math.sin(θ)
+        )
     }
 }

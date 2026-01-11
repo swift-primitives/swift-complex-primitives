@@ -16,7 +16,7 @@ import Testing
 @Suite
 struct ComplexDivisionTests {
 
-    let tolerance: Double = 1e-10
+    let tolerance: Numeric.Real<Double> = 1e-10
 
     // MARK: - Basic Division
 
@@ -34,7 +34,7 @@ struct ComplexDivisionTests {
     @Test
     func divisionByOne() {
         let z = Numeric.Complex(3.0, 4.0)
-        let result = z / .one
+        let result = z / Numeric.Complex<Double>.one
         #expect(result.equals.approximate(z, tolerance: tolerance))
     }
 
@@ -42,7 +42,7 @@ struct ComplexDivisionTests {
     func divisionByI() {
         // z/i = z * (-i) = z * (0 - i)
         let z = Numeric.Complex(3.0, 4.0)
-        let result = z / .i
+        let result = z / Numeric.Complex<Double>.i
         // (3 + 4i)/i = (3 + 4i)(-i) = -3i - 4i² = 4 - 3i
         let expected = Numeric.Complex(4.0, -3.0)
         #expect(result.equals.approximate(expected, tolerance: tolerance))
@@ -53,14 +53,14 @@ struct ComplexDivisionTests {
     @Test
     func divisionByZero() {
         let z = Numeric.Complex(1.0, 2.0)
-        let result = z / .zero
+        let result = z / Numeric.Complex<Double>.zero
         #expect(!result.isFinite)
     }
 
     @Test
     func zeroDividedByNonZero() {
         let result = Numeric.Complex<Double>.zero / Numeric.Complex(1.0, 2.0)
-        #expect(result.equals.approximate(.zero, tolerance: tolerance))
+        #expect(result.equals.approximate(Numeric.Complex<Double>.zero, tolerance: tolerance))
     }
 
     // MARK: - Rescaled Division (Overflow/Underflow)
@@ -74,7 +74,7 @@ struct ComplexDivisionTests {
         let result = z / w
 
         // z/z = 1
-        #expect(result.equals.approximate(.one, tolerance: 1e-5))
+        #expect(result.equals.approximate(Numeric.Complex<Double>.one, tolerance: 1e-5))
     }
 
     @Test
@@ -87,7 +87,7 @@ struct ComplexDivisionTests {
 
         // Result should be large but finite
         #expect(result.isFinite)
-        #expect(result.magnitude() > 1)
+        #expect(result.magnitude() > 1.0)
     }
 
     @Test
@@ -95,7 +95,7 @@ struct ComplexDivisionTests {
         // z/w should give the same result as (tz)/(tw) for any nonzero t
         let z = Numeric.Complex(3.0, 4.0)
         let w = Numeric.Complex(1.0, 2.0)
-        let t = 1e100
+        let t: Numeric.Real<Double> = Numeric.Real(1e100)
 
         let result1 = z / w
         let result2 = z.scalar.multiply(by: t) / w.scalar.multiply(by: t)

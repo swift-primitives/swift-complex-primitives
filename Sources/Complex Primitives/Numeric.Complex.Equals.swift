@@ -18,7 +18,7 @@ extension Numeric.Complex {
     /// ```swift
     /// let z = Numeric.Complex(1.0, 2.0)
     /// let w = Numeric.Complex(1.0 + 1e-10, 2.0)
-    /// z.equals.approximate(w, tolerance: 1e-9)  // true
+    /// z.equals.approximate(w, tolerance: 1e-9.real)  // true
     /// ```
     public struct Equals {
         @usableFromInline
@@ -39,8 +39,8 @@ extension Numeric.Complex {
     /// Access equality comparisons.
     ///
     /// ```swift
-    /// z.equals.approximate(w, tolerance: 1e-10)
-    /// z.equals.approximate(w, absolute: 1e-10, relative: 1e-5)
+    /// z.equals.approximate(w, tolerance: 1e-10.real)
+    /// z.equals.approximate(w, absolute: 1e-10.real, relative: 1e-5.real)
     /// ```
     @inlinable
     public var equals: Equals {
@@ -48,9 +48,9 @@ extension Numeric.Complex {
     }
 }
 
-// MARK: - Approximate Equality
+// MARK: - Double
 
-extension Numeric.Complex.Equals {
+extension Numeric.Complex.Equals where Scalar == Double {
     /// Tests if two complex numbers are approximately equal within tolerance.
     ///
     /// Uses the complex norm: returns `true` if `|z - w| <= tolerance`.
@@ -60,7 +60,7 @@ extension Numeric.Complex.Equals {
     ///   - tolerance: Maximum allowed absolute difference in the norm.
     /// - Returns: `true` if the distance between values is within tolerance.
     @inlinable
-    public func approximate(_ other: Numeric.Complex<Scalar>, tolerance: Scalar) -> Bool {
+    public func approximate(_ other: Numeric.Complex<Scalar>, tolerance: Numeric.Real<Scalar>) -> Bool {
         (complex - other).magnitude() <= tolerance
     }
 
@@ -77,8 +77,30 @@ extension Numeric.Complex.Equals {
     @inlinable
     public func approximate(
         _ other: Numeric.Complex<Scalar>,
-        absolute: Scalar,
-        relative: Scalar = .zero
+        absolute: Numeric.Real<Scalar>,
+        relative: Numeric.Real<Scalar> = .zero
+    ) -> Bool {
+        let diff = (complex - other).magnitude()
+        let scale = max(complex.magnitude(), other.magnitude())
+        return diff <= absolute + relative * scale
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Complex.Equals where Scalar == Float {
+    /// Tests if two complex numbers are approximately equal within tolerance.
+    @inlinable
+    public func approximate(_ other: Numeric.Complex<Scalar>, tolerance: Numeric.Real<Scalar>) -> Bool {
+        (complex - other).magnitude() <= tolerance
+    }
+
+    /// Tests if two complex numbers are approximately equal using combined tolerance.
+    @inlinable
+    public func approximate(
+        _ other: Numeric.Complex<Scalar>,
+        absolute: Numeric.Real<Scalar>,
+        relative: Numeric.Real<Scalar> = .zero
     ) -> Bool {
         let diff = (complex - other).magnitude()
         let scale = max(complex.magnitude(), other.magnitude())
@@ -107,7 +129,7 @@ extension Numeric.Complex.Equals {
     /// Access componentwise equality comparisons.
     ///
     /// ```swift
-    /// z.equals.componentwise.approximate(w, tolerance: 1e-10)
+    /// z.equals.componentwise.approximate(w, tolerance: 1e-10.real)
     /// ```
     @inlinable
     public var componentwise: Componentwise {
@@ -115,7 +137,9 @@ extension Numeric.Complex.Equals {
     }
 }
 
-extension Numeric.Complex.Equals.Componentwise {
+// MARK: - Componentwise Double
+
+extension Numeric.Complex.Equals.Componentwise where Scalar == Double {
     /// Tests if two complex numbers are approximately equal componentwise.
     ///
     /// Returns `true` if both `|Re(z) - Re(w)| <= tolerance` and
@@ -126,8 +150,19 @@ extension Numeric.Complex.Equals.Componentwise {
     ///   - tolerance: Maximum allowed difference for each component.
     /// - Returns: `true` if both components are within tolerance.
     @inlinable
-    public func approximate(_ other: Numeric.Complex<Scalar>, tolerance: Scalar) -> Bool {
-        (complex.real - other.real).magnitude <= tolerance &&
-        (complex.imaginary - other.imaginary).magnitude <= tolerance
+    public func approximate(_ other: Numeric.Complex<Scalar>, tolerance: Numeric.Real<Scalar>) -> Bool {
+        abs(complex.real._value - other.real._value) <= tolerance._value &&
+        abs(complex.imaginary._value - other.imaginary._value) <= tolerance._value
+    }
+}
+
+// MARK: - Componentwise Float
+
+extension Numeric.Complex.Equals.Componentwise where Scalar == Float {
+    /// Tests if two complex numbers are approximately equal componentwise.
+    @inlinable
+    public func approximate(_ other: Numeric.Complex<Scalar>, tolerance: Numeric.Real<Scalar>) -> Bool {
+        abs(complex.real._value - other.real._value) <= tolerance._value &&
+        abs(complex.imaginary._value - other.imaginary._value) <= tolerance._value
     }
 }

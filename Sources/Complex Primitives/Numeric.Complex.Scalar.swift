@@ -15,8 +15,8 @@ extension Numeric.Complex {
     ///
     /// ```swift
     /// let z = Numeric.Complex(3.0, 4.0)
-    /// let scaled = z.scalar.multiply(by: 2.0)  // 6 + 8i
-    /// let halved = z.scalar.divide(by: 2.0)    // 1.5 + 2i
+    /// let scaled = z.scalar.multiply(by: 2.0.real)  // 6 + 8i
+    /// let halved = z.scalar.divide(by: 2.0.real)    // 1.5 + 2i
     /// ```
     public struct Operation {
         @usableFromInline
@@ -43,26 +43,50 @@ extension Numeric.Complex {
     }
 }
 
-// MARK: - Multiply
+// MARK: - Double
 
-extension Numeric.Complex.Operation {
+extension Numeric.Complex.Operation where Scalar == Double {
     /// Returns this complex number multiplied by a real scalar.
     ///
     /// More efficient than complex multiplication when the multiplier is real.
     @inlinable
-    public func multiply(by value: Scalar) -> Numeric.Complex<Scalar> {
-        Numeric.Complex(complex.real * value, complex.imaginary * value)
+    public func multiply(by value: Numeric.Real<Scalar>) -> Numeric.Complex<Scalar> {
+        Numeric.Complex(
+            real: complex.real * value,
+            imaginary: Numeric.Imaginary(complex.imaginary._value * value._value)
+        )
     }
-}
 
-// MARK: - Divide
-
-extension Numeric.Complex.Operation {
     /// Returns this complex number divided by a real scalar.
     ///
     /// More efficient than complex division when the divisor is real.
     @inlinable
-    public func divide(by value: Scalar) -> Numeric.Complex<Scalar> {
-        Numeric.Complex(complex.real / value, complex.imaginary / value)
+    public func divide(by value: Numeric.Real<Scalar>) -> Numeric.Complex<Scalar> {
+        Numeric.Complex(
+            real: complex.real / value,
+            imaginary: Numeric.Imaginary(complex.imaginary._value / value._value)
+        )
+    }
+}
+
+// MARK: - Float
+
+extension Numeric.Complex.Operation where Scalar == Float {
+    /// Returns this complex number multiplied by a real scalar.
+    @inlinable
+    public func multiply(by value: Numeric.Real<Scalar>) -> Numeric.Complex<Scalar> {
+        Numeric.Complex(
+            real: complex.real * value,
+            imaginary: Numeric.Imaginary(complex.imaginary._value * value._value)
+        )
+    }
+
+    /// Returns this complex number divided by a real scalar.
+    @inlinable
+    public func divide(by value: Numeric.Real<Scalar>) -> Numeric.Complex<Scalar> {
+        Numeric.Complex(
+            real: complex.real / value,
+            imaginary: Numeric.Imaginary(complex.imaginary._value / value._value)
+        )
     }
 }

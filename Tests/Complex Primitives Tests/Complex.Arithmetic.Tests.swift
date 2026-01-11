@@ -59,13 +59,13 @@ struct ComplexArithmeticTests {
     }
 
     @Test
-    func additionWithScalar() {
+    func additionWithReal() {
         let z = Numeric.Complex(1.0, 2.0)
-        let sum1 = z + 5.0
+        let sum1 = z + 5.0.real
         #expect(sum1.real == 6.0)
         #expect(sum1.imaginary == 2.0)
 
-        let sum2 = 5.0 + z
+        let sum2 = 5.0.real + z
         #expect(sum2.real == 6.0)
         #expect(sum2.imaginary == 2.0)
     }
@@ -102,9 +102,9 @@ struct ComplexArithmeticTests {
     }
 
     @Test
-    func multiplicationWithScalar() {
+    func multiplicationWithReal() {
         let z = Numeric.Complex(2.0, 3.0)
-        let product = z * 2.0
+        let product = z * 2.0.real
         #expect(product.real == 4.0)
         #expect(product.imaginary == 6.0)
     }
@@ -125,14 +125,14 @@ struct ComplexArithmeticTests {
         let z = Numeric.Complex(3.0, 4.0)
         let w = Numeric.Complex(1.0, 2.0)
         let quotient = z / w
-        #expect(quotient.real.equals.approximate(11.0 / 5.0, tolerance: 1e-10))
-        #expect(quotient.imaginary.equals.approximate(-2.0 / 5.0, tolerance: 1e-10))
+        #expect(quotient.real.equals.approximate((11.0 / 5.0).real, tolerance: 1e-10))
+        #expect(quotient.imaginary.equals.approximate((-2.0 / 5.0).i, tolerance: 1e-10))
     }
 
     @Test
-    func divisionByScalar() {
+    func divisionByReal() {
         let z = Numeric.Complex(4.0, 6.0)
-        let quotient = z / 2.0
+        let quotient = z / 2.0.real
         #expect(quotient.real == 2.0)
         #expect(quotient.imaginary == 3.0)
     }

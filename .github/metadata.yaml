@@ -1,0 +1,12 @@
+# .github/metadata.yaml
+# Backfilled 2026-05-04 — surfaced as the sole metadata.yaml-missing consumer
+# in the post-rollout 100% completeness sweep.
+description: "Complex number types for Swift."
+topics:
+  - primitives
+  - complex
+  - complex-numbers
+  - numerics
+homepage: "https://swift-institute.org"
+readme:
+  family: E

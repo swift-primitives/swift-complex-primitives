@@ -1,0 +1,14 @@
+# SwiftLint configuration for swift-complex-primitives
+# Inherits from the shared parent configuration in swift-primitives/.github
+
+parent_config: https://raw.githubusercontent.com/swift-primitives/.github/main/.swiftlint.yml
+
+# Package-specific overrides (duplicates parent for CI reliability)
+disabled_rules:
+  - function_parameter_count
+  - identifier_name
+  - line_length
+  - trailing_comma
+  - nesting
+  - for_where
+  - type_name

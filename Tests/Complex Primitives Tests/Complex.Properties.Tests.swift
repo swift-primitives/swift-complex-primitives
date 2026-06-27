@@ -11,6 +11,7 @@
 // ===----------------------------------------------------------------------===//
 
 import Testing
+
 @testable import Complex_Primitives
 
 @Suite
@@ -20,16 +21,16 @@ struct ComplexPropertiesTests {
 
     @Test
     func isFinite() {
-        let finite = Numeric.Complex(1.0, 2.0)
+        let finite = Complex.Number(1.0, 2.0)
         #expect(finite.isFinite)
 
-        let infReal = Numeric.Complex(Double.infinity, 0.0)
+        let infReal = Complex.Number(Double.infinity, 0.0)
         #expect(!infReal.isFinite)
 
-        let infImag = Numeric.Complex(0.0, Double.infinity)
+        let infImag = Complex.Number(0.0, Double.infinity)
         #expect(!infImag.isFinite)
 
-        let nan = Numeric.Complex(Double.nan, 0.0)
+        let nan = Complex.Number(Double.nan, 0.0)
         #expect(!nan.isFinite)
     }
 
@@ -37,10 +38,10 @@ struct ComplexPropertiesTests {
 
     @Test
     func isZero() {
-        let zero = Numeric.Complex<Double>.zero
+        let zero = Complex.Number<Double>.zero
         #expect(zero.isZero)
 
-        let notZero = Numeric.Complex(0.0, 1e-100)
+        let notZero = Complex.Number(0.0, 1e-100)
         #expect(!notZero.isZero)
     }
 
@@ -48,13 +49,13 @@ struct ComplexPropertiesTests {
 
     @Test
     func isNormal() {
-        let normal = Numeric.Complex(1.0, 2.0)
+        let normal = Complex.Number(1.0, 2.0)
         #expect(normal.isNormal)
 
-        let subnormal = Numeric.Complex(Double.leastNonzeroMagnitude, 0.0)
+        let subnormal = Complex.Number(Double.leastNonzeroMagnitude, 0.0)
         #expect(!subnormal.isNormal)
 
-        let zero = Numeric.Complex<Double>.zero
+        let zero = Complex.Number<Double>.zero
         #expect(!zero.isNormal)
     }
 
@@ -62,13 +63,13 @@ struct ComplexPropertiesTests {
 
     @Test
     func isSubnormal() {
-        let subnormal = Numeric.Complex(Double.leastNonzeroMagnitude, 0.0)
+        let subnormal = Complex.Number(Double.leastNonzeroMagnitude, 0.0)
         #expect(subnormal.isSubnormal)
 
-        let normal = Numeric.Complex(1.0, 2.0)
+        let normal = Complex.Number(1.0, 2.0)
         #expect(!normal.isSubnormal)
 
-        let zero = Numeric.Complex<Double>.zero
+        let zero = Complex.Number<Double>.zero
         #expect(!zero.isSubnormal)
     }
 
@@ -76,27 +77,30 @@ struct ComplexPropertiesTests {
 
     @Test
     func normalized() {
-        let z = Numeric.Complex(3.0, 4.0)
+        let z = Complex.Number(3.0, 4.0)
         let n = z.normalized!
 
         // Normalized should have unit length
         #expect(n.magnitude().equals.approximate(1.0, tolerance: 1e-10))
 
         // Should have same phase
-        #expect(n.polar.phase.rawValue.equals.approximate(
-            z.polar.phase.rawValue, tolerance: 1e-10
-        ))
+        #expect(
+            n.polar.phase.underlying.equals.approximate(
+                z.polar.phase.underlying,
+                tolerance: 1e-10
+            )
+        )
     }
 
     @Test
     func normalizedZero() {
-        let zero = Numeric.Complex<Double>.zero
+        let zero = Complex.Number<Double>.zero
         #expect(zero.normalized == nil)
     }
 
     @Test
     func normalizedInfinity() {
-        let inf = Numeric.Complex<Double>.infinity
+        let inf = Complex.Number<Double>.infinity
         #expect(inf.normalized == nil)
     }
 
@@ -104,13 +108,13 @@ struct ComplexPropertiesTests {
 
     @Test
     func magnitude() {
-        let z = Numeric.Complex(3.0, 4.0)
+        let z = Complex.Number(3.0, 4.0)
         #expect(z.magnitude().equals.approximate(5.0, tolerance: 1e-10))
     }
 
     @Test
     func magnitudeSquared() {
-        let z = Numeric.Complex(3.0, 4.0)
+        let z = Complex.Number(3.0, 4.0)
         #expect(z.magnitude.squared.equals.approximate(25.0, tolerance: 1e-10))
     }
 
@@ -118,10 +122,10 @@ struct ComplexPropertiesTests {
 
     @Test
     func description() {
-        let z = Numeric.Complex(3.0, 4.0)
+        let z = Complex.Number(3.0, 4.0)
         #expect(z.description == "(3.0, 4.0)")
 
-        let inf = Numeric.Complex<Double>.infinity
+        let inf = Complex.Number<Double>.infinity
         #expect(inf.description == "inf")
     }
 
@@ -129,8 +133,8 @@ struct ComplexPropertiesTests {
 
     @Test
     func approximateEquality() {
-        let z = Numeric.Complex(1.0, 2.0)
-        let w = Numeric.Complex(1.0 + 1e-12, 2.0 + 1e-12)
+        let z = Complex.Number(1.0, 2.0)
+        let w = Complex.Number(1.0 + 1e-12, 2.0 + 1e-12)
 
         #expect(z.equals.approximate(w, tolerance: 1e-10))
         #expect(!z.equals.approximate(w, tolerance: 1e-15))
@@ -138,8 +142,8 @@ struct ComplexPropertiesTests {
 
     @Test
     func approximateEqualityRelative() {
-        let z = Numeric.Complex(1000.0, 2000.0)
-        let w = Numeric.Complex(1000.1, 2000.1)
+        let z = Complex.Number(1000.0, 2000.0)
+        let w = Complex.Number(1000.1, 2000.1)
 
         #expect(z.equals.approximate(w, absolute: 0.0, relative: 1e-3))
         #expect(!z.equals.approximate(w, absolute: 0.0, relative: 1e-5))
@@ -147,8 +151,8 @@ struct ComplexPropertiesTests {
 
     @Test
     func componentwiseApproximateEquality() {
-        let z = Numeric.Complex(1.0, 2.0)
-        let w = Numeric.Complex(1.0 + 1e-12, 2.0 + 1e-12)
+        let z = Complex.Number(1.0, 2.0)
+        let w = Complex.Number(1.0 + 1e-12, 2.0 + 1e-12)
 
         #expect(z.equals.componentwise.approximate(w, tolerance: 1e-10))
         #expect(!z.equals.componentwise.approximate(w, tolerance: 1e-15))

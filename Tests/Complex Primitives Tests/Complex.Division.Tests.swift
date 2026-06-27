@@ -11,19 +11,20 @@
 // ===----------------------------------------------------------------------===//
 
 import Testing
+
 @testable import Complex_Primitives
 
 @Suite
 struct ComplexDivisionTests {
 
-    let tolerance: Numeric.Real<Double> = 1e-10
+    let tolerance: Complex.Real<Double> = 1e-10
 
     // MARK: - Basic Division
 
     @Test
     func basicDivision() {
-        let z = Numeric.Complex(3.0, 4.0)
-        let w = Numeric.Complex(1.0, 2.0)
+        let z = Complex.Number(3.0, 4.0)
+        let w = Complex.Number(1.0, 2.0)
         let result = z / w
 
         // Verify z/w * w = z
@@ -33,18 +34,18 @@ struct ComplexDivisionTests {
 
     @Test
     func divisionByOne() {
-        let z = Numeric.Complex(3.0, 4.0)
-        let result = z / Numeric.Complex<Double>.one
+        let z = Complex.Number(3.0, 4.0)
+        let result = z / Complex.Number<Double>.one
         #expect(result.equals.approximate(z, tolerance: tolerance))
     }
 
     @Test
     func divisionByI() {
         // z/i = z * (-i) = z * (0 - i)
-        let z = Numeric.Complex(3.0, 4.0)
-        let result = z / Numeric.Complex<Double>.i
+        let z = Complex.Number(3.0, 4.0)
+        let result = z / Complex.Number<Double>.i
         // (3 + 4i)/i = (3 + 4i)(-i) = -3i - 4i² = 4 - 3i
-        let expected = Numeric.Complex(4.0, -3.0)
+        let expected = Complex.Number(4.0, -3.0)
         #expect(result.equals.approximate(expected, tolerance: tolerance))
     }
 
@@ -52,15 +53,15 @@ struct ComplexDivisionTests {
 
     @Test
     func divisionByZero() {
-        let z = Numeric.Complex(1.0, 2.0)
-        let result = z / Numeric.Complex<Double>.zero
+        let z = Complex.Number(1.0, 2.0)
+        let result = z / Complex.Number<Double>.zero
         #expect(!result.isFinite)
     }
 
     @Test
     func zeroDividedByNonZero() {
-        let result = Numeric.Complex<Double>.zero / Numeric.Complex(1.0, 2.0)
-        #expect(result.equals.approximate(Numeric.Complex<Double>.zero, tolerance: tolerance))
+        let result = Complex.Number<Double>.zero / Complex.Number(1.0, 2.0)
+        #expect(result.equals.approximate(Complex.Number<Double>.zero, tolerance: tolerance))
     }
 
     // MARK: - Rescaled Division (Overflow/Underflow)
@@ -69,20 +70,20 @@ struct ComplexDivisionTests {
     func divisionWithLargeDenominator() {
         // Test division where naive computation would overflow
         let large = Double.greatestFiniteMagnitude / 4
-        let z = Numeric.Complex(large, large)
-        let w = Numeric.Complex(large, large)
+        let z = Complex.Number(large, large)
+        let w = Complex.Number(large, large)
         let result = z / w
 
         // z/z = 1
-        #expect(result.equals.approximate(Numeric.Complex<Double>.one, tolerance: 1e-5))
+        #expect(result.equals.approximate(Complex.Number<Double>.one, tolerance: 1e-5))
     }
 
     @Test
     func divisionWithSmallDenominator() {
         // Test division where naive computation would underflow
         let small = Double.leastNormalMagnitude * 4
-        let z = Numeric.Complex(1.0, 1.0)
-        let w = Numeric.Complex(small, small)
+        let z = Complex.Number(1.0, 1.0)
+        let w = Complex.Number(small, small)
         let result = z / w
 
         // Result should be large but finite
@@ -93,9 +94,9 @@ struct ComplexDivisionTests {
     @Test
     func divisionPreservesScale() {
         // z/w should give the same result as (tz)/(tw) for any nonzero t
-        let z = Numeric.Complex(3.0, 4.0)
-        let w = Numeric.Complex(1.0, 2.0)
-        let t: Numeric.Real<Double> = Numeric.Real(1e100)
+        let z = Complex.Number(3.0, 4.0)
+        let w = Complex.Number(1.0, 2.0)
+        let t: Complex.Real<Double> = Complex.Real(1e100)
 
         let result1 = z / w
         let result2 = z.scalar.multiply(by: t) / w.scalar.multiply(by: t)
@@ -107,8 +108,8 @@ struct ComplexDivisionTests {
 
     @Test
     func multiplicationDivisionInverse() {
-        let z = Numeric.Complex(3.0, 4.0)
-        let w = Numeric.Complex(1.0, 2.0)
+        let z = Complex.Number(3.0, 4.0)
+        let w = Complex.Number(1.0, 2.0)
 
         // (z * w) / w = z
         let product = z * w
@@ -118,10 +119,10 @@ struct ComplexDivisionTests {
 
     @Test
     func reciprocalConsistency() {
-        let w = Numeric.Complex(1.0, 2.0)
+        let w = Complex.Number(1.0, 2.0)
 
         // 1/w should equal w.reciprocal
-        let recip1 = Numeric.Complex<Double>.one / w
+        let recip1 = Complex.Number<Double>.one / w
         let recip2 = w.reciprocal
         #expect(recip1.equals.approximate(recip2, tolerance: tolerance))
     }

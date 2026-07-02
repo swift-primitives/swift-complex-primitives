@@ -1,7 +1,7 @@
 # .github/metadata.yaml
 # Backfilled 2026-05-04 — surfaced as the sole metadata.yaml-missing consumer
 # in the post-rollout 100% completeness sweep.
-description: "Complex numbers with distinct real and imaginary types so i x i collapses to a real at compile time for Swift."
+description: "Complex numbers with distinct real and imaginary types so squaring the imaginary unit collapses to a real at compile time for Swift."
 topics:
   - primitives
   - complex
